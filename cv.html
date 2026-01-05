@@ -42,35 +42,169 @@
       <h1 class="hero__title reveal">Yunus Emre Balci</h1>
 
       <p class="hero__sub reveal">
-        Open to work — websites, full-stack, AI/ML systems, and prototypes.
+        Software engineer and developer focused on clean systems, modern web, and applied machine learning.
+        I build production websites, tooling, and research-driven prototypes.
       </p>
 
       <div class="hero__actions reveal">
         <a class="btn" href="assets/Yunus_Emre_Balci_CV.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
         <a class="btn btn--ghost" href="assets/Yunus_Emre_Balci_CV.pdf" download>Download</a>
-        <a class="btn btn--ghost" href="index.html">Back</a>
-        <a class="btn btn--ghost" href="mailto:yunus27@live.dk">Email</a>
-        <a class="btn btn--ghost" href="https://www.linkedin.com/in/yunus-emre-balci/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="btn btn--ghost" href="https://github.com/YunusBalci21/" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="btn btn--ghost" href="index.html">Back to site</a>
+        <a class="btn btn--ghost" href="mailto:yunus27@live.dk">yunus27@live.dk</a>
       </div>
     </div>
   </section>
 
+  <!-- PROFILE -->
+  <section class="section">
+    <div class="section__head">
+      <h2 class="reveal">Profile</h2>
+    </div>
+
+    <p class="reveal" style="max-width: 70ch;">
+      I’m a developer with a strong bias toward shipping.
+      I’ve built and deployed real websites, engineered full projects end-to-end,
+      and I’m currently working on language-guided control and reinforcement learning systems.
+      <br /><br />
+      I care about clean architecture, clarity, and building things that actually work —
+      whether that’s a production website, a backend service, or a research prototype.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="section__head">
+      <h2 class="reveal">Skills</h2>
+    </div>
+
+    <div class="grid">
+      <article class="card reveal">
+        <h3 class="card__title">Programming</h3>
+        <p class="card__desc">
+          JavaScript / TypeScript, Python, C++, HTML, CSS, SQL
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <h3 class="card__title">Web & Systems</h3>
+        <p class="card__desc">
+          Frontend & backend development, REST APIs, authentication, deployment,
+          GitHub Pages, Linux environments
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <h3 class="card__title">AI / ML</h3>
+        <p class="card__desc">
+          Reinforcement learning, motion control, MuJoCo,
+          PyTorch, environment design, evaluation pipelines
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <h3 class="card__title">Tools</h3>
+        <p class="card__desc">
+          Git, Docker basics, Firebase, Node.js, React,
+          debugging, profiling, experimentation
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / PROJECTS -->
+  <section class="section">
+    <div class="section__head">
+      <h2 class="reveal">Selected Work & Projects</h2>
+    </div>
+
+    <div class="grid">
+      <article class="card reveal" style="grid-column: span 12;">
+        <div class="card__top">
+          <h3 class="card__title">Production websites</h3>
+          <span class="card__meta mono">Web</span>
+        </div>
+        <p class="card__desc">
+          Built and deployed multiple real websites including
+          <strong>jamabolig.dk</strong>, <strong>hdcgroup.dk</strong>,
+          and a demo site for <strong>pilea.dk</strong>.
+          Responsible for structure, performance, design implementation, and deployment.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__top">
+          <h3 class="card__title">Discord music bot</h3>
+          <span class="card__meta mono">Node.js</span>
+        </div>
+        <p class="card__desc">
+          Built a full-featured Discord music bot with audio pipelines,
+          presets, queue management, and error handling.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__top">
+          <h3 class="card__title">C++ Antivirus project</h3>
+          <span class="card__meta mono">Systems</span>
+        </div>
+        <p class="card__desc">
+          Implemented a C++ antivirus project focusing on scanning,
+          pattern detection, and system-level logic.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section">
+    <div class="section__head">
+      <h2 class="reveal">Research</h2>
+    </div>
+
+    <article class="card reveal" style="grid-column: span 12;">
+      <div class="card__top">
+        <h3 class="card__title">Motion-language control</h3>
+        <span class="card__meta mono">Reinforcement Learning</span>
+      </div>
+      <p class="card__desc">
+        Ongoing research on enabling agents to follow open-vocabulary natural-language
+        instructions without vision by combining motion-language alignment
+        with hierarchical reinforcement learning.
+        <br /><br />
+        Uses motion tokenization, skill composition, and MuJoCo environments.
+      </p>
+    </article>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <div class="section__head">
+      <h2 class="reveal">Education</h2>
+    </div>
+
+    <article class="card reveal" style="grid-column: span 12;">
+      <p class="card__desc">
+        <strong>BSc Computer Science</strong><br />
+        Focus on algorithms, systems, and artificial intelligence.
+      </p>
+    </article>
+  </section>
+
+  <!-- PDF -->
   <section class="section">
     <div class="section__head">
       <h2 class="reveal">CV PDF</h2>
-      <p class="muted reveal">Embedded preview (with fallback).</p>
+      <p class="muted reveal">Printable version.</p>
     </div>
 
-    <div class="cv-embed reveal" role="region" aria-label="CV PDF viewer">
+    <div class="cv-embed reveal">
       <object data="assets/Yunus_Emre_Balci_CV.pdf" type="application/pdf">
-        <iframe
-                src="assets/Yunus_Emre_Balci_CV.pdf#view=FitH"
-                title="Yunus Emre Balci CV PDF"
-                loading="lazy"
-        ></iframe>
+        <iframe src="assets/Yunus_Emre_Balci_CV.pdf"></iframe>
       </object>
     </div>
+  </section>
+</main>
+
 
     <p class="muted small reveal" style="margin-top: 10px;">
       If the viewer doesn’t load, use the Open PDF button.
