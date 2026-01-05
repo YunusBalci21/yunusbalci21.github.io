@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio of work: websites, experiments, and projects." />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<div class="intro" aria-hidden="true">
+    <div class="intro__wipe"></div>
+    <div class="intro__wipe intro__wipe--2"></div>
+    <div class="intro__label">
+        <span class="mono">loading</span>
+    </div>
+</div>
+
+<header class="site-header">
+    <a class="brand" href="#top">
+        <span class="brand__dot" aria-hidden="true"></span>
+        <span class="brand__name mono" data-bind="name">Your Name</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+        <a href="#work">Websites</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#now">Now</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="theme" type="button" id="themeBtn" aria-label="Toggle theme">
+        <span class="mono">theme</span>
+    </button>
+</header>
+
+<main id="top">
+    <section class="hero">
+        <div class="hero__inner">
+            <p class="kicker mono reveal">Selected work and ongoing builds</p>
+
+            <h1 class="hero__title reveal">
+                <span data-bind="headline">Black/white portfolio with clean motion.</span>
+            </h1>
+
+            <p class="hero__sub reveal" data-bind="tagline">
+                Websites, experiments, and systems I’m building right now.
+            </p>
+
+            <div class="hero__actions reveal">
+                <a class="btn" href="#work">Explore work</a>
+                <a class="btn btn--ghost" data-bind-href="github" href="#">GitHub</a>
+                <a class="btn btn--ghost" data-bind-href="resume" href="#" id="resumeBtn">Open PDF</a>
+            </div>
+        </div>
+
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee__track">
+                <span>websites</span><span class="sep">/</span>
+                <span>systems</span><span class="sep">/</span>
+                <span>research</span><span class="sep">/</span>
+                <span>experiments</span><span class="sep">/</span>
+                <span>websites</span><span class="sep">/</span>
+                <span>systems</span><span class="sep">/</span>
+                <span>research</span><span class="sep">/</span>
+                <span>experiments</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="work">
+        <div class="section__head">
+            <h2 class="reveal">Websites</h2>
+            <p class="muted reveal">Live sites and demos.</p>
+        </div>
+        <div class="grid" data-render="websites"></div>
+    </section>
+
+    <section class="section" id="projects">
+        <div class="section__head">
+            <h2 class="reveal">Projects</h2>
+            <p class="muted reveal">Repos, tools, and systems.</p>
+        </div>
+        <div class="grid" data-render="projects"></div>
+    </section>
+
+    <section class="section" id="research">
+        <div class="section__head">
+            <h2 class="reveal">Research and notes</h2>
+            <p class="muted reveal">PDFs, writeups, and work-in-progress.</p>
+        </div>
+        <div class="grid" data-render="research"></div>
+    </section>
+
+    <section class="section" id="now">
+        <div class="section__head">
+            <h2 class="reveal">Now</h2>
+            <p class="muted reveal">What I’m actively building.</p>
+        </div>
+
+        <div class="now reveal">
+            <div class="now__list" data-render="now"></div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="section__head">
+            <h2 class="reveal">Contact</h2>
+            <p class="muted reveal">Quick links.</p>
+        </div>
+
+        <div class="contact reveal">
+            <div class="contact__row">
+                <a class="link" data-bind-href="github" href="#">GitHub</a>
+                <a class="link" data-bind-href="website" href="#">Main link</a>
+                <a class="link" data-bind-href="email" href="#" id="emailLink">Email</a>
+                <button class="btn btn--ghost" id="copyEmailBtn" type="button">Copy email</button>
+            </div>
+
+            <p class="muted small" data-bind="footerNote">
+                Minimal, fast, and deployable on GitHub Pages.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <span class="mono" data-bind="footerLeft">©</span>
+    <span class="mono" data-bind="footerRight">built in black/white</span>
+</footer>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
