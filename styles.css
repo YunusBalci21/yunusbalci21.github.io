@@ -417,6 +417,15 @@ main {
   inset: 0;
   z-index: 100;
   background: var(--bg);
+  animation: introHide 260ms ease forwards;
+  animation-delay: 1.25s;
+}
+
+@keyframes introHide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .intro__wipe {
@@ -488,4 +497,12 @@ body.loaded .intro {
   .reveal { opacity: 1; transform: none; filter: none; }
   .intro__wipe { animation: none; transform: none; }
   body::before { animation: none; }
+}
+
+
+/* If JS never runs, don't hide content */
+html:not([data-js]) .reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
 }

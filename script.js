@@ -1,3 +1,4 @@
+document.documentElement.setAttribute("data-js", "on");
 const CONTENT = {
   name: "Yunus Emre Balci",
   headline: "Clean work. Sharp motion. Real builds.",
@@ -184,21 +185,27 @@ function makeCard(item) {
     tags.appendChild(tag);
   });
 
+  const href = typeof item.href === "string" ? item.href.trim() : "";
+  const hasLink = href.length > 0;
+  const isExternal = /^https?:\/\//i.test(href);
+
   const hint = document.createElement("div");
   hint.className = "card__hint mono";
-  hint.textContent = item.secondaryHref ? "open / page + pdf" : "open";
-
-  const link = document.createElement("a");
-  link.className = "card__link";
-  link.href = item.href;
-  link.target = item.href.startsWith("http") ? "_blank" : "_self";
-  link.rel = item.href.startsWith("http") ? "noopener noreferrer" : "";
+  hint.textContent = item.secondaryHref ? "open / page + pdf" : (hasLink ? "open" : "no link yet");
 
   card.appendChild(top);
   card.appendChild(desc);
   card.appendChild(tags);
   card.appendChild(hint);
-  card.appendChild(link);
+
+  if (hasLink) {
+    const link = document.createElement("a");
+    link.className = "card__link";
+    link.href = href;
+    link.target = isExternal ? "_blank" : "_self";
+    link.rel = isExternal ? "noopener noreferrer" : "";
+    card.appendChild(link);
+  }
 
   if (item.secondaryHref) {
     card.addEventListener("click", (e) => {
@@ -329,4 +336,12 @@ function main() {
   setupIntro();
 }
 
-main();
+try {
+  main();
+} catch (err) {
+  console.error(err);
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in-view"));
+  document.body.classList.add("loaded");
+  const intro = document.querySelector(".intro");
+  if (intro) intro.remove();
+}
