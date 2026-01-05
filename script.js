@@ -37,6 +37,7 @@ const CONTENT = {
     }
   ],
 
+
   projects: [
     {
       title: "MyDrive (MVP)",
@@ -45,17 +46,17 @@ const CONTENT = {
       tags: ["React Native", "Firebase", "MVP"]
     },
     {
-      title: "CTF bachelor project",
+      title: "CTF Bachelor Project",
       meta: "Academic (Grade: 10)",
-      description: "Created Capture the Flag challenges involving machine learning and SQL injection.",
-      href: "https://github.com/YunusBalci21/ctf_final",
+      description: "Capture the Flag challenges involving machine learning and SQL injection — part of my bachelor's project.",
+      href: "https://github.com/YunusBalci21/ctf-bachelor-project", // <-- Actual repo name if different
       tags: ["Security", "CTF", "ML"]
     },
     {
-      title: "Language-guided RL agents",
-      meta: "Academic",
-      description: "Agents trained to follow language instructions using reinforcement learning.",
-      href: "https://github.com/YunusBalci21/motion-language-control",
+      title: "Language-guided RL Agents",
+      meta: "Research",
+      description: "Agents trained to follow natural language instructions using reinforcement learning.",
+      href: "https://github.com/YunusBalci21/motion-language-model", // <-- your motion-language-model repo
       tags: ["RL", "Agents", "Research"]
     },
     {
@@ -80,29 +81,31 @@ const CONTENT = {
       tags: ["RL", "Python", "Research"]
     },
     {
-      title: "ANIMA (simulation)",
-      meta: "Experiment",
-      description: "Agent-based simulation experiments and RL-driven behaviors.",
-      href: "https://github.com/YunusBalci21/anima",
+      title: "ANIMA (Simulation)",
+      meta: "In progress",
+      description: "Agent-based simulation with emergent behavior and LLM-powered cognition.",
+      href: "https://github.com/YunusBalci21/anima", // <-- your actual ANIMA repo link
       tags: ["Simulation", "AI", "Agents"]
     }
   ],
 
+
   research: [
     {
-      title: "CV",
-      meta: "Page + PDF",
-      description: "Full CV page with embedded PDF and a readable snapshot.",
-      href: "cv.html",
-      secondaryHref: "assets/Yunus_Emre_Balci_CV.pdf",
-      tags: ["CV", "Experience", "Skills"]
+      title: "Motion-Language Model",
+      meta: "PDF + GitHub",
+      description: "Open-vocabulary instruction following without vision using motion-language alignment and hierarchical RL.",
+      href: "assets/motion-language-model.pdf",
+      secondaryHref: "https://github.com/YunusBalci21/motion-language-model",
+      tags: ["ML", "RL", "MuJoCo"]
     },
     {
-      title: "Motion-language model notes",
-      meta: "PDF",
-      description: "Drop your motion-language PDF into /assets and link it here.",
-      href: "assets/motion-language-model.pdf",
-      tags: ["ML", "RL", "MuJoCo"]
+      title: "Curriculum Vitae",
+      meta: "CV page + PDF",
+      description: "Full CV page with embedded PDF and a readable version.",
+      href: "cv.html",
+      secondaryHref: "assets/Yunus_Emre_Balci_CV.pdf",
+      tags: ["CV", "Experience"]
     }
   ],
 
