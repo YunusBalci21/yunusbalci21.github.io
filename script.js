@@ -317,3 +317,39 @@ try {
   const intro = document.querySelector(".intro");
   if (intro) intro.remove();
 }
+
+// Observe dynamically added reveal elements
+const revealObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+
+// Observe existing reveals
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Re-observe when new content is injected
+const revealMutationObserver = new MutationObserver(mutations => {
+  mutations.forEach(m => {
+    m.addedNodes.forEach(node => {
+      if (node.nodeType === 1 && node.classList?.contains('reveal')) {
+        revealObserver.observe(node);
+      }
+      node.querySelectorAll?.('.reveal')?.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+  });
+});
+
+revealMutationObserver.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
