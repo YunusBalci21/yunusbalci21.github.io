@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Motion-language / motion control notes — Yunus Emre Balci" />
+  <meta name="description" content="Continuous Control from Open-Vocabulary Feedback — Yunus Emre Balci" />
   <title>Motion — Yunus Emre Balci</title>
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -38,18 +38,23 @@
 <main id="top">
   <section class="hero">
     <div class="hero__inner">
-      <p class="kicker mono reveal">Research notes</p>
-      <h1 class="hero__title reveal">Motion-language / motion control</h1>
+      <p class="kicker mono reveal">Research paper</p>
+      <h1 class="hero__title reveal">Continuous Control from Open-Vocabulary Feedback</h1>
 
       <p class="hero__sub reveal">
-        Open-vocabulary natural-language instruction following without vision, using motion-language alignment + hierarchical RL.
+        Replacing visual rewards with motion-language alignment to enable fast, real-time instruction following in MuJoCo — without vision.
       </p>
 
       <div class="hero__actions reveal">
-        <a class="btn" href="assets/motion-language-model.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
-        <a class="btn btn--ghost" href="assets/motion-language-model.pdf" download>Download</a>
+        <a class="btn" href="assets/Continuous_Control_from_Open_Vocabulary_Feedback.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+        <a class="btn btn--ghost" href="assets/Continuous_Control_from_Open_Vocabulary_Feedback.pdf" download>Download</a>
         <a class="btn btn--ghost" href="index.html#research">Back</a>
-        <a class="btn btn--ghost" data-bind-href="motionRepo" href="#" target="_blank" rel="noopener noreferrer">GitHub repo</a>
+        <a class="btn btn--ghost"
+           data-bind-href="motionRepo"
+           href="https://github.com/YunusBalci21/motion-language-control"
+           target="_blank"
+           rel="noopener noreferrer"
+        >GitHub repo</a>
       </div>
     </div>
   </section>
@@ -61,10 +66,10 @@
     </div>
 
     <div class="cv-embed reveal" role="region" aria-label="Motion-language PDF viewer">
-      <object data="assets/motion-language-model.pdf" type="application/pdf">
+      <object data="assets/Continuous_Control_from_Open_Vocabulary_Feedback.pdf" type="application/pdf">
         <iframe
-                src="assets/motion-language-model.pdf#view=FitH"
-                title="Motion-language model PDF"
+                src="assets/Continuous_Control_from_Open_Vocabulary_Feedback.pdf#view=FitH"
+                title="Continuous Control from Open-Vocabulary Feedback PDF"
                 loading="lazy"
         ></iframe>
       </object>
@@ -78,48 +83,92 @@
   <section class="section">
     <div class="section__head">
       <h2 class="reveal">Snapshot</h2>
-      <p class="muted reveal">High-level overview.</p>
+      <p class="muted reveal">What the project is about (and what it achieved).</p>
     </div>
 
     <div class="grid">
       <article class="card reveal" style="grid-column: span 12;">
         <div class="card__top">
-          <h3 class="card__title">Goal</h3>
-          <span class="card__meta mono">Instruction-following</span>
+          <h3 class="card__title">Problem</h3>
+          <span class="card__meta mono">Slow reward pipelines</span>
         </div>
         <p class="card__desc">
-          Enable MuJoCo agents to follow open-vocabulary natural-language instructions without vision by combining motion-language alignment
-          with hierarchical reinforcement learning.
+          Many language-conditioned control methods rely on rendering the simulator and computing rewards with vision-language models (e.g., CLIP).
+          That render-to-CLIP pipeline is expensive and makes real-time human-in-the-loop control impractical.
         </p>
       </article>
 
       <article class="card reveal">
         <div class="card__top">
-          <h3 class="card__title">Motion representation</h3>
-          <span class="card__meta mono">Motion tokens</span>
+          <h3 class="card__title">Key idea</h3>
+          <span class="card__meta mono">No vision needed</span>
         </div>
         <p class="card__desc">
-          Use a MotionGPT-style pipeline: VQ-VAE motion tokenization + motion-language alignment to connect text to motion.
+          Compute reward directly from joint trajectories: use motion-language similarity as the reward signal, bypassing visual rendering entirely.
         </p>
       </article>
 
       <article class="card reveal">
         <div class="card__top">
-          <h3 class="card__title">Hierarchy</h3>
-          <span class="card__meta mono">High/low level</span>
+          <h3 class="card__title">Reward model</h3>
+          <span class="card__meta mono">MotionGPT</span>
         </div>
         <p class="card__desc">
-          High-level policy selects skills conditioned on language; low-level controller executes atomic motions learned from mocap.
+          Convert MuJoCo motion features to a HumanML3D-style representation and score how well the motion matches the instruction using MotionGPT’s
+          pretrained motion encoder.
         </p>
       </article>
 
       <article class="card reveal" style="grid-column: span 12;">
         <div class="card__top">
-          <h3 class="card__title">Evaluation</h3>
-          <span class="card__meta mono">MuJoCo</span>
+          <h3 class="card__title">Learning setup</h3>
+          <span class="card__meta mono">Hierarchical RL</span>
         </div>
         <p class="card__desc">
-          Evaluate on Humanoid, HalfCheetah, Ant, and manipulation tasks using motion-language alignment as the reward signal.
+          Train locomotion policies with PPO using a simple hierarchy: a high-level policy outputs target joint positions, and a low-level PD controller
+          executes stable torques.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__top">
+          <h3 class="card__title">Efficiency</h3>
+          <span class="card__meta mono">28.8× faster</span>
+        </div>
+        <p class="card__desc">
+          Motion-language rewards compute in ~0.52ms (≈1,938 rewards/s) versus ~14.85ms for CLIP + rendering, with ~32.5× lower GPU memory usage.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__top">
+          <h3 class="card__title">Real-time control</h3>
+          <span class="card__meta mono">Interactive loop</span>
+        </div>
+        <p class="card__desc">
+          The speedup enables live instruction following: users can issue natural language commands and observe immediate agent responses at interactive rates.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__top">
+          <h3 class="card__title">Generalization</h3>
+          <span class="card__meta mono">97–99% transfer</span>
+        </div>
+        <p class="card__desc">
+          Policies trained on a single instruction retain similarity on paraphrases like “sprint forward” / “dash forward”, showing semantic understanding
+          beyond memorization.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__top">
+          <h3 class="card__title">Evaluation</h3>
+          <span class="card__meta mono">5 MuJoCo envs</span>
+        </div>
+        <p class="card__desc">
+          Tested on Humanoid, Ant, HalfCheetah, Walker2d, and Hopper. Strong alignment on planar/quadruped locomotion, with stability/morphology limits on
+          Humanoid/Hopper.
         </p>
       </article>
     </div>
