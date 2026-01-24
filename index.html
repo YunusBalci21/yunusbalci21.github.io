@@ -218,5 +218,70 @@
 </footer>
 
 <script type="module" src="script.js"></script>
+
+<script>
+  // Inject "Audio Converter Pro" into the Projects grid (without changing the existing design/rendering).
+  (function () {
+    function addAudioConverterPro() {
+      const grid = document.querySelector('[data-render="projects"]');
+      if (!grid) return;
+
+      // Avoid duplicates
+      const alreadyThere = Array.from(grid.querySelectorAll('.card__title'))
+        .some(el => (el.textContent || '').trim().toLowerCase() === 'audio converter pro');
+
+      if (alreadyThere) return;
+
+      const card = document.createElement('a');
+      card.className = 'card reveal';
+      card.href = 'https://github.com/YunusBalci21/AudioConverterPro';
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+
+      card.innerHTML = `
+        <div class="card__top">
+          <h3 class="card__title">Audio Converter Pro</h3>
+          <span class="card__meta mono">Python • PyQt5 • FFmpeg</span>
+        </div>
+        <p class="card__desc">
+          A modern audio toolkit for downloading (YouTube), batch converting, and exporting game-ready assets.
+          Used by the team behind <span class="mono">The Gates of Versailles</span> (HoI4 mod) for fast audio pipeline work.
+        </p>
+      `;
+
+      // Put it at the top of the Projects list
+      grid.prepend(card);
+    }
+
+    function waitForProjectsRender() {
+      const grid = document.querySelector('[data-render="projects"]');
+      if (!grid) return;
+
+      // If the grid is already populated, add immediately.
+      if (grid.children.length > 0) {
+        addAudioConverterPro();
+        return;
+      }
+
+      // Otherwise wait for the renderer (script.js) to populate it.
+      const obs = new MutationObserver(() => {
+        if (grid.children.length > 0) {
+          addAudioConverterPro();
+          obs.disconnect();
+        }
+      });
+
+      obs.observe(grid, { childList: true });
+
+      // Fallback: still add after a moment even if the grid remains empty.
+      setTimeout(() => {
+        addAudioConverterPro();
+        obs.disconnect();
+      }, 1200);
+    }
+
+    window.addEventListener('DOMContentLoaded', waitForProjectsRender);
+  })();
+</script>
 </body>
 </html>
