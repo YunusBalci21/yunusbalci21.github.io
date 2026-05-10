@@ -16,6 +16,13 @@ const CONTENT = {
 
   websites: [
     {
+      title: "mortenschokolade.dk",
+      meta: "Live site",
+      description: "Full Shopify rebuild and redesign for Mortens Chokolade, a handmade chocolate shop in Odense. Migrated from Bricksite to a custom Dawn theme with editorial design, ~15 pages, and a webshop with collection filters.",
+      href: "https://www.mortenschokolade.dk",
+      tags: ["Shopify", "Liquid", "Production"]
+    },
+    {
       title: "jamabolig.dk",
       meta: "Live site",
       description: "Website build and deployment. Clean layout, fast loading, and structured content.",
@@ -352,4 +359,3 @@ revealMutationObserver.observe(document.body, {
   childList: true,
   subtree: true
 });
-
