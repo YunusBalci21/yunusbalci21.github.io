@@ -37,11 +37,11 @@ const CONTENT = {
       tags: ["Web", "Brand", "Business"]
     },
     {
-      title: "pilea.dk (demo)",
-      meta: "Demo",
-      description: "Experimental demo build for Pilea. Built to iterate quickly and test direction.",
-      href: "https://pilea-dk.vercel.app/",
-      tags: ["Demo", "UI", "Iteration"]
+      title: "STUCHLY",
+      meta: "Live site",
+      description: "Artist site for STUCHLY, a DJ/producer. Custom audio player with SoundCloud integration, a downloads section for remixes and mixes, and a live-dates page — built in React with smooth animated transitions.",
+      href: "https://stuchly.vercel.app/",
+      tags: ["React", "Music", "UI"]
     }
   ],
 
